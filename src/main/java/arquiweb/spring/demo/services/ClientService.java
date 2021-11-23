@@ -1,6 +1,7 @@
 package arquiweb.spring.demo.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -27,8 +28,9 @@ class ClientService {
 		return this.clients.findAll();
 	}
 	
-	public Client getClient(int dni) {
-		return this.clients.getById(dni);
+	
+	public Optional<Client> getClient(Integer dni) {
+		return Optional.of(this.clients.findById(dni).get());
 	}
 	
 	@Transactional

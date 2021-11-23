@@ -6,6 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.SqlResultSetMapping;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import arquiweb.spring.demo.dtos.ClientReportDTO;
 
 import javax.persistence.ConstructorResult;
@@ -40,6 +42,7 @@ import javax.persistence.ColumnResult;
         }
     )
 )
+@JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
 public class Client {
 	
 	@Id

@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.SqlResultSetMapping;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import arquiweb.spring.demo.dtos.BillReportDTO;
 
 /**
@@ -46,6 +48,7 @@ import arquiweb.spring.demo.dtos.BillReportDTO;
         }
     )
 )
+@JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
 public class Bill {
 
 	@Id

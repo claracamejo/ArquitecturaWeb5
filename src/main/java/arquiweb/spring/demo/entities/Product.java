@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.SqlResultSetMapping;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import arquiweb.spring.demo.dtos.ClientReportDTO;
 import arquiweb.spring.demo.dtos.ProductReportDTO;
 
@@ -40,6 +42,7 @@ import arquiweb.spring.demo.dtos.ProductReportDTO;
         }
     )
 )
+@JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
 public class Product {
 
 	@Id

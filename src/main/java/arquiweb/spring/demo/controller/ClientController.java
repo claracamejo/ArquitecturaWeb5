@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import arquiweb.spring.demo.dtos.ClientReportDTO;
 import arquiweb.spring.demo.entities.Client;
 import arquiweb.spring.demo.services.ClientService;
@@ -52,8 +54,15 @@ private static Logger LOG = LoggerFactory.getLogger(ClientController.class);
 	}
 	
 	@GetMapping(value = "/{id}")
-	public Client getClient(@PathVariable( "id" ) int id) {
-		return this.clientService.getClient(id);
+	public ResponseEntity<?> getClient(@PathVariable( "id" ) int id) {
+		Optional<Client> responseC = this.clientService.getClient(id);
+		System.out.println("out " + responseC);
+		if (responseC.isEmpty()) {
+			return new ResponseEntity<>(responseC, HttpStatus.NO_CONTENT);
+		}else {
+			return new ResponseEntity<>(responseC, HttpStatus.OK);
+		}
+		//return this.clientService.getClient(id);
 	}
 	
 	
