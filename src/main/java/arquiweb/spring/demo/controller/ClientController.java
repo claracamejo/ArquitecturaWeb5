@@ -115,7 +115,7 @@ private static Logger LOG = LoggerFactory.getLogger(ClientController.class);
 	
 	/**
 	 * @return
-	 * Restorna el listado del reporte de Clientes
+	 * Retorna el listado del reporte de Clientes
 	 */
 	@GetMapping("/report")
 	public List<ClientReportDTO> getReport() {
