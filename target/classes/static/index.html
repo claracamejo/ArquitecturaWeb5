@@ -1,0 +1,446 @@
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+<title>TP Integrador 4</title>
+</head>
+<body>
+	<h2>Trabajo Practico Integrador 4, Arquitecturas Web</h2>
+
+	<div class="container mt-3 mb-3">
+		<h3>Agregar Cliente</h3>
+		<button type="button" class="btn btn-secondary" data-toggle="modal"
+			data-target="#addClient">Nuevo Cliente</button>
+	</div>
+	<div class="modal fade" id="addClient" tabindex="-1" role="dialog"
+		aria-labelledby="addClient " aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Agregar Cliente</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="num-Book">Numero de Documento</label> <input
+								type="text" class="form-control" id="dni"
+								aria-describedby="unique-value"> <small
+								id="unique-value" class="form-text text-muted"></small>
+						</div>
+						<div class="form-group">
+							<label for="num-doc"> Nombre </label> <input type="text"
+								class="form-control" id="nameC" required>
+						</div>
+						<div class="form-group">
+							<label for="lastname"> Apellido </label> <input type="text"
+								class="form-control" id="lastname" required>
+						</div>
+
+						<div class="form-group">
+							<label for="city"> Direccion </label> <input type="text"
+								class="form-control" id="address" required>
+						</div>
+						<button type="button" id="add-Client" class="btn btn-primary"
+							data-dismiss="modal">Agregar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<div class="container mt-3 mb-3">
+		<h3>Agregar Producto</h3>
+		<button type="button" class="btn btn-secondary" data-toggle="modal"
+			data-target="#addProduct">Nuevo Producto</button>
+	</div>
+	<div class="modal fade" id="addProduct" tabindex="-1" role="dialog"
+		aria-labelledby="addProduct " aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Agregar Producto</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="num-doc"> Nombre </label> <input type="text"
+								class="form-control" id="nameP" required>
+						</div>
+						<div class="form-group">
+							<label for="lastname"> Precio </label> <input type="number"
+								class="form-control" id="price" required>
+						</div>
+
+						<div class="form-group">
+							<label for="city"> Stock </label> <input type="nmber"
+								class="form-control" id="stock" required>
+						</div>
+						<button type="button" id="add-Product" class="btn btn-primary"
+							data-dismiss="modal">Agregar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="container mt-3 mb-3">
+		<h3>Nueva Compra</h3>
+		<button type="button" class="btn btn-secondary" data-toggle="modal"
+			data-target="#addBill">Nueva Compra</button>
+	</div>
+
+	<div class="modal fade" id="addBill" tabindex="-1" role="dialog"
+		aria-labelledby="addBill " aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Nueva Compra</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="num-doc"> DNI Cliente </label> <input type="number"
+								class="form-control" id="dniC" required>
+						</div>
+						<div class="form-group">
+							<label for="lastname"> Fecha </label> <input type="date"
+								class="form-control" id="dateC" required>
+						</div>
+
+						<div class="form-group">
+							<label for="city"> Monto </label> 
+							<input type="number" value=0 class="form-control" id="totalCarrito" disabled>
+						</div>
+						<div class="form-group">
+							<label for="bill-product-list">Producto</label>
+							<table class="table" id="bill-product-list">
+								<thead>
+									<tr>
+										<th scope="col">Id</th>
+										<th scope="col">Nombre</th>
+										<th scope="col">Precio</th>
+										<th scope="col">Cantidad</th>
+										<th scope="col">Acciones</th>
+									</tr>
+								</thead>
+								<tbody class="body-bill-product-list">
+					
+								</tbody>
+							</table>
+							<div id="carrito"></div>
+						</div>
+						<button type="submit" id="add-Bill" class="btn btn-primary"
+							data-dismiss="modal">Agregar</button>
+					</form>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+	<div class="container mt-3 mb-3">
+		<h3>
+			Editar o Eliminar Clientes
+			</p>
+			<button type="button" class="btn btn-secondary"
+				onclick="getAllClient()">GET</button>
+			<button type="button" class="btn btn-secondary"
+				onclick="ocultarTablaC()">Ocultar Tabla</button>
+	</div>
+	<div class="container mt-3 mb-3">
+		<table class="table" id="myTable">
+			<thead>
+				<tr>
+					<th scope="col">N. Documento</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Apellido</th>
+					<th scope="col">Direccion</th>
+					<th scope="col">Acciones</th>
+				</tr>
+			</thead>
+			<tbody class="bodyTable">
+
+			</tbody>
+		</table>
+		<div class="modal fade" id="editClient" tabindex="-1" role="dialog"
+		aria-labelledby="editClient " aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Editar Cliente</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="num-Book">Numero de Documento</label> 
+								<input type="text" class="form-control" id="dniEdit"
+								aria-describedby="unique-value" disabled> 
+								<small id="unique-value" class="form-text text-muted"></small>
+						</div>
+						<div class="form-group">
+							<label for="num-doc"> Nombre </label> <input type="text"
+								class="form-control" id="nameCEdit" required>
+						</div>
+						<div class="form-group">
+							<label for="lastname"> Apellido </label> <input type="text"
+								class="form-control" id="lastnameEdit" required>
+						</div>
+
+						<div class="form-group">
+							<label for="city"> Direccion </label> <input type="text"
+								class="form-control" id="addressEdit" required>
+						</div>
+						<button type="button" id="edit-Client" class="btn btn-primary"
+							data-dismiss="modal">Editar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+    
+    <div class="container mt-3 mb-3">
+		<h3>
+			Editar o Eliminar Productos
+			</p>
+			<button type="button" class="btn btn-secondary"
+				onclick="getAllProducts()">GET</button>
+			<button type="button" class="btn btn-secondary"
+				onclick="ocultarTablaP()">Ocultar Tabla</button>
+	</div>
+	<div class="container mt-3 mb-3">
+		<table class="table" id="myTableP">
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Precio</th>
+					<th scope="col">Stock</th>
+					<th scope="col">Acciones</th>
+				</tr>
+			</thead>
+			<tbody class="bodyTableP">
+
+			</tbody>
+		</table>
+		<div class="modal fade" id="editProduct" tabindex="-1" role="dialog"
+		aria-labelledby="editProduct " aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Editar Producto</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+                    <form>
+						<div class="form-group">
+							<label for="id">id</label> 
+								<input type="text" class="form-control" id="idEdit"
+								aria-describedby="unique-value" disabled> 
+								<small id="unique-value" class="form-text text-muted"></small>
+						</div>
+						<div class="form-group">
+							<label for="name"> Nombre </label> <input type="text"
+								class="form-control" id="namePEdit" required>
+						</div>
+						<div class="form-group">
+							<label for="price"> Precio </label> <input type="text"
+								class="form-control" id="priceEdit" required>
+						</div>
+
+						<div class="form-group">
+							<label for="stock"> Stock </label> <input type="text"
+								class="form-control" id="stockEdit" required>
+						</div>
+						<button type="button" id="edit-Product" class="btn btn-primary"
+							data-dismiss="modal">Editar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+
+    <div class="container mt-3 mb-3">
+		<h3>
+			Compras
+			</p>
+			<button type="button" class="btn btn-secondary"
+				onclick="getAllBills()">GET</button>
+			<button type="button" class="btn btn-secondary"
+				onclick="ocultarTablaB()">Ocultar Tabla</button>
+	</div>
+	<div class="container mt-3 mb-3">
+		<table class="table" id="myTableB">
+			<thead>
+				<tr>
+                    <th scope="col">ID</th>
+					<th scope="col">DNI Cliente</th>
+					<th scope="col">Fecha</th>
+					<th scope="col">Monto</th>
+					<th scope="col">Productos</th>
+				</tr>
+			</thead>
+			<tbody class="bodyTableB">
+
+			</tbody>
+		</table>
+	</div>
+	<div class="modal fade" id="billProducts" tabindex="-1" role="dialog"
+		aria-labelledby="addProduct " aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Productos</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+								<input type="text" class="form-control" id="idBillProduct"
+								aria-describedby="unique-value" disabled hidden> 
+								<small id="unique-value" class="form-text text-muted"></small>
+						</div>
+					</form>
+					<table class="table" id="myTableBillProduct">
+		        	<thead>
+			    	 <tr>
+					  <th scope="col">Nombre</th>
+					  <th scope="col">Stock</th>
+					  <th scope="col">Precio</th>
+				</tr>
+			   </thead>
+			   <tbody class="bodyTableBillProduct">
+
+			  </tbody>
+		     </table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container mt-3 mb-3">
+		<h3>
+			Ver reporte que indica los clientes y el monto total de sus compras
+			</p>
+			<button type="button" class="btn btn-secondary"
+				onclick="getReportClient()">GET</button>
+			<button type="button" class="btn btn-secondary"
+				onclick="ocultarTablaClient()">Ocultar Tabla</button>
+	</div>
+	<div class="container mt-3 mb-3">
+		<table class="table" id="myTableClient">
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Apellido</th>
+					<th scope="col">Direccion</th>
+					<th scope="col">Total</th>
+				</tr>
+			</thead>
+			<tbody class="bodyTableClient">
+
+			</tbody>
+		</table>
+	</div>
+		
+		<div class="container mt-3 mb-3">
+		<h3>
+			Ver reporte que indica las ventas por dia
+			</p>
+			<button type="button" class="btn btn-secondary"
+				onclick="getReportBill()">GET</button>
+			<button type="button" class="btn btn-secondary"
+				onclick="ocultarTablaBill()">Ocultar Tabla</button>
+	</div>
+	<div class="container mt-3 mb-3">
+		<table class="table" id="myTableBill">
+			<thead>
+				<tr>
+					<th scope="col">Fecha</th>
+					<th scope="col">Total</th>
+				</tr>
+			</thead>
+			<tbody class="bodyTableBill">
+
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="container mt-3 mb-3">
+		<h3>
+			Ver el producto mas vendido
+			</p>
+			<button type="button" class="btn btn-secondary"
+				onclick="getReportProduct()">GET</button>
+			<button type="button" class="btn btn-secondary"
+				onclick="ocultarTablaProduct()">Ocultar Tabla</button>
+	</div>
+	<div class="container mt-3 mb-3">
+		<table class="table" id="myTableProduct">
+			<thead>
+				<tr>
+					<th scope="col">id</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Precio</th>
+					<th scope="col">Total Ventas</th>
+				</tr>
+			</thead>
+			<tbody class="bodyTableProduct">
+
+			</tbody>
+		</table>
+	</div>
+
+
+	<script type="text/javascript"
+		src="http://momentjs.com/downloads/moment-with-locales.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="main.js"></script>
+	<!-- JS, Popper.js, and jQuery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+		crossorigin="anonymous"></script>
+
+</body>
+</html>

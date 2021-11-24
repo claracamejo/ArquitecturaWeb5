@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: ArquiWeb.Spring.demo.ArquiWebTp4ApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.96 s - in ArquiWeb.Spring.demo.ArquiWebTp4ApplicationTests

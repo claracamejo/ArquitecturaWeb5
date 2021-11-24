@@ -4,10 +4,10 @@ document.querySelector("#add-Bill").addEventListener("click", addBill);
 //document.querySelector("#bill-product-list").addEventListener("click", addProductosCarrito);
 document.querySelector("#edit-Client").addEventListener("click", editClient);
 document.querySelector("#edit-Product").addEventListener("click", editProduct);
-//<<<<<<< HEAD
+<<<<<<< HEAD
 //document.querySelector("#edit-Bill").addEventListener("click", editBill);
-//=======
-//>>>>>>> branch 'main' of https://github.com/tomasmat12/ArquiWebTP4.git
+=======
+>>>>>>> branch 'main' of https://github.com/tomasmat12/ArquiWebTP4.git
 
 window.addEventListener('DOMContentLoaded', (event) => {
     
