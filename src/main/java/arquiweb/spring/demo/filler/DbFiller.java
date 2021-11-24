@@ -17,6 +17,11 @@ import arquiweb.spring.demo.repositories.ProductRepository;
 
 import java.sql.Date;
 
+/**
+ * Esta clase se encarga de persistir los datos como si tuvieramos una conexion real a una base de datos,
+ * ademas la utilizamos para agregar datos dummies y poder probar alguno de los metodos que utilizamos
+ * en el sistema
+ */
 @Configuration
 public class DbFiller {
 	
