@@ -37,11 +37,20 @@ private static Logger LOG = LoggerFactory.getLogger(ClientController.class);
 	@Autowired
 	private ClientService clientService;
 	
+	/**
+	 * @return
+	 * Retorna un listado de clientes
+	 */
 	@GetMapping("")
 	public List<Client> getAll() {
 		return this.clientService.getClients();
 	}
 	
+	/**
+	 * @param c
+	 * @return
+	 * Retorna true si el Cliente c fue insertado con exito
+	 */
 	@PostMapping("")
 	public ResponseEntity<Client> addClient(@RequestBody Client c) {
 		
@@ -53,6 +62,11 @@ private static Logger LOG = LoggerFactory.getLogger(ClientController.class);
 		return new ResponseEntity<Client>(c, HttpStatus.OK);
 	}
 	
+	/**
+	 * @param id
+	 * @return
+	 * Retorna el cliente con ese id
+	 */
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<?> getClient(@PathVariable( "id" ) int id) {
 		Optional<Client> responseC = this.clientService.getClient(id);

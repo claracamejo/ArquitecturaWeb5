@@ -27,11 +27,19 @@ public class BillController {
 	@Autowired
 	private BillService billService;
 	
+	/**
+	 * @return
+	 * Retorna un listado de Bills 
+	 */
 	@GetMapping("")
 	public List<Bill> getAll() {
 		return this.billService.getBills();
 	}
 	
+	/**
+	 * @return
+	 * Retorna el listado de BillReport del reporte de Bill
+	 */
 	@GetMapping("/report")
 	public List<BillReportDTO> report(){
 		return this.billService.report();
