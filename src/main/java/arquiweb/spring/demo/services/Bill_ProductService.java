@@ -14,8 +14,8 @@ import arquiweb.spring.demo.entities.Product;
 import arquiweb.spring.demo.repositories.Bill_productRepository;
 
 /**
-*  Este es llamado desde el controlador de Bill_Product y sabe a que Repositorio tiene que llamar 
-*  dependiendo la instancia creada de la aplicación.
+*  Este servicio es llamado desde el controlador de Bill_Product y decide a que 
+*  repositorio llamar dependiendo la instancia creada de la aplicacion
 *
 */
 
@@ -25,15 +25,30 @@ public class Bill_ProductService {
 	@Autowired
 	private Bill_productRepository billproduct;
 	
+	/**
+	 * @return List<Bill_Product> 
+	 * Retorna una lista de Bill_product 
+	 */
 	public List<Bill_Product> getClients() {
 		return this.billproduct.findAll();
 	}
 	
+	/**
+	 * @param b
+	 * @return 
+	 * Retorna true en el caso de que el Objeto Bill_Product sea guardado con exito
+	 */
 	@Transactional
 	public boolean insert(Bill_Product b) {
 		this.billproduct.save(b);
 		return true;
 	}
+	
+	/**
+	 * @param dni
+	 * @return
+	 * Retorna true si el objeto Bill_product con ese dni fue borrado con exito
+	 */
 	@Transactional
 	public boolean delete(int dni) {
 		this.billproduct.deleteById(dni);
@@ -46,6 +61,11 @@ public class Bill_ProductService {
 		return true;
 	}*/
 	
+	/**
+	 * @param id
+	 * @return
+	 * Retorna una lista de Bill_Product que esten asociadas con el id de Bill correspondiente
+	 */
 	@Transactional
 	public List<Bill_Product> getByIdBill(int id){
 		return this.billproduct.getByIdBill(id);

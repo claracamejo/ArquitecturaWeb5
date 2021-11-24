@@ -79,7 +79,11 @@ private static Logger LOG = LoggerFactory.getLogger(ClientController.class);
 		//return this.clientService.getClient(id);
 	}
 	
-	
+	/**
+	 * @param id
+	 * @return
+	 * Retorna true si el Cliente c fue eliminado con exito
+	 */
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<?> deleteClient(@PathVariable("id") int id) {
 		boolean ok = this.clientService.delete(id);
@@ -93,6 +97,12 @@ private static Logger LOG = LoggerFactory.getLogger(ClientController.class);
 		}
 	}
 	
+	/**
+	 * @param id
+	 * @param client
+	 * @return
+	 * Retorna true si el Cliente c fue actualizado con exito
+	 */
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<?> updateClient(@PathVariable( "id" ) int id, @RequestBody Client client) {
 		boolean ok = false;
@@ -103,6 +113,10 @@ private static Logger LOG = LoggerFactory.getLogger(ClientController.class);
 		else return new ResponseEntity<>(id, HttpStatus.OK);
 	}
 	
+	/**
+	 * @return
+	 * Restorna el listado del reporte de Clientes
+	 */
 	@GetMapping("/report")
 	public List<ClientReportDTO> getReport() {
 		return this.clientService.getClientsReport();
