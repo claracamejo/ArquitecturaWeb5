@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import arquiweb.spring.demo.dtos.ClientReportDTO;
 import arquiweb.spring.demo.entities.Client;
 import arquiweb.spring.demo.services.ClientService;
 
-/*
+/**
 *  Dado un pedido REST, el controlador de Client atiende el pedido y llama al servicio requerido.
 *  Objetivo principal mapear las URL para acceder al recurso necesario.
 */
@@ -35,11 +37,20 @@ private static Logger LOG = LoggerFactory.getLogger(ClientController.class);
 	@Autowired
 	private ClientService clientService;
 	
+	/**
+	 * @return
+	 * Retorna un listado de clientes
+	 */
 	@GetMapping("")
 	public List<Client> getAll() {
 		return this.clientService.getClients();
 	}
 	
+	/**
+	 * @param c
+	 * @return
+	 * Retorna true si el Cliente c fue insertado con exito
+	 */
 	@PostMapping("")
 	public ResponseEntity<Client> addClient(@RequestBody Client c) {
 		
@@ -51,12 +62,28 @@ private static Logger LOG = LoggerFactory.getLogger(ClientController.class);
 		return new ResponseEntity<Client>(c, HttpStatus.OK);
 	}
 	
+	/**
+	 * @param id
+	 * @return
+	 * Retorna el cliente con ese id
+	 */
 	@GetMapping(value = "/{id}")
-	public Client getClient(@PathVariable( "id" ) int id) {
-		return this.clientService.getClient(id);
+	public ResponseEntity<?> getClient(@PathVariable( "id" ) int id) {
+		Optional<Client> responseC = this.clientService.getClient(id);
+		System.out.println("out " + responseC);
+		if (responseC.isEmpty()) {
+			return new ResponseEntity<>(responseC, HttpStatus.NO_CONTENT);
+		}else {
+			return new ResponseEntity<>(responseC, HttpStatus.OK);
+		}
+		//return this.clientService.getClient(id);
 	}
 	
-	
+	/**
+	 * @param id
+	 * @return
+	 * Retorna true si el Cliente c fue eliminado con exito
+	 */
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<?> deleteClient(@PathVariable("id") int id) {
 		boolean ok = this.clientService.delete(id);
@@ -70,6 +97,12 @@ private static Logger LOG = LoggerFactory.getLogger(ClientController.class);
 		}
 	}
 	
+	/**
+	 * @param id
+	 * @param client
+	 * @return
+	 * Retorna true si el Cliente c fue actualizado con exito
+	 */
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<?> updateClient(@PathVariable( "id" ) int id, @RequestBody Client client) {
 		boolean ok = false;
@@ -80,6 +113,10 @@ private static Logger LOG = LoggerFactory.getLogger(ClientController.class);
 		else return new ResponseEntity<>(id, HttpStatus.OK);
 	}
 	
+	/**
+	 * @return
+	 * Retorna el listado del reporte de Clientes
+	 */
 	@GetMapping("/report")
 	public List<ClientReportDTO> getReport() {
 		return this.clientService.getClientsReport();

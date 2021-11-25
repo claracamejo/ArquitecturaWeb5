@@ -10,8 +10,8 @@ import arquiweb.spring.demo.entities.Bill;
 import arquiweb.spring.demo.repositories.BillRepository;
 
 /**
-*  Este es llamado desde el controlador de Bill y sabe a que Repositorio tiene que llamar 
-*  dependiendo la instancia creada de la aplicación.
+*  Este servicio es llamado desde el controlador de Bill y decide a que 
+*  repositorio llamar dependiendo la instancia creada de la aplicacion
 *
 */
 
@@ -22,10 +22,18 @@ public class BillService {
 	@Autowired
 	private BillRepository billrepository;
 	
+	/**
+	 * @return
+	 * Retorna un listado de Bills
+	 */
 	public List<Bill> getBills() {
 		return this.billrepository.findAll();
 	}
 	
+	/**
+	 * @return
+	 * Retorna un listado de BillReportDTO
+	 */
 	public List<BillReportDTO> report(){
 		return this.billrepository.salesReport();
 	}

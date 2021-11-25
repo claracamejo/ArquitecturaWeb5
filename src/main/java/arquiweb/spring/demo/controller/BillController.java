@@ -13,7 +13,7 @@ import arquiweb.spring.demo.dtos.BillReportDTO;
 import arquiweb.spring.demo.entities.Bill;
 import arquiweb.spring.demo.services.BillService;
 
-/*
+/**
 *  Dado un pedido REST, el controlador de Bill atiende el pedido y llama al servicio requerido.
 *  Objetivo principal mapear las URL para acceder al recurso necesario.
 */
@@ -27,11 +27,19 @@ public class BillController {
 	@Autowired
 	private BillService billService;
 	
+	/**
+	 * @return
+	 * Retorna un listado de Bills 
+	 */
 	@GetMapping("")
 	public List<Bill> getAll() {
 		return this.billService.getBills();
 	}
 	
+	/**
+	 * @return
+	 * Retorna el listado de BillReport del reporte de Bill
+	 */
 	@GetMapping("/report")
 	public List<BillReportDTO> report(){
 		return this.billService.report();

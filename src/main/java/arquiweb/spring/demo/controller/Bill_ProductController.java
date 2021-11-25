@@ -15,9 +15,10 @@ import arquiweb.spring.demo.entities.Product;
 import arquiweb.spring.demo.services.Bill_ProductService;
 
 
-/*
+/**
 *  Dado un pedido REST, el controlador de Bill_Product atiende el pedido y llama al servicio requerido.
 *  Objetivo principal mapear las URL para acceder al recurso necesario.
+*  
 */
 
 @RestController
@@ -28,11 +29,20 @@ class Bill_ProductController {
 	@Autowired
 	private Bill_ProductService billProductService;
 	
+	/**
+	 * @return
+	 * Retorna un listado de Bill_Product
+	 */
 	@GetMapping("")
 	public List<Bill_Product> getAll() {
 		return this.billProductService.getClients();
 	}
 	
+	/**
+	 * @param id
+	 * @return
+	 * Retorna un listado de Bill_Product que tenga de id el parametro enviado
+	 */
 	@GetMapping(value = "/bill/{id}")
 	public List<Bill_Product> getByIdBill(@PathVariable( "id" ) int id) {
 		return this.billProductService.getByIdBill(id);
