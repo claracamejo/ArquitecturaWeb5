@@ -4,10 +4,12 @@ document.querySelector("#add-Bill").addEventListener("click", addBill);
 //document.querySelector("#bill-product-list").addEventListener("click", addProductosCarrito);
 document.querySelector("#edit-Client").addEventListener("click", editClient);
 document.querySelector("#edit-Product").addEventListener("click", editProduct);
+
 //<<<<<<< HEAD
 //document.querySelector("#edit-Bill").addEventListener("click", editBill);
 //=======
 //>>>>>>> branch 'main' of https://github.com/tomasmat12/ArquiWebTP4.git
+
 
 window.addEventListener('DOMContentLoaded', (event) => {
     
@@ -135,6 +137,8 @@ console.log("getP");
 				let cell5 = newRow.insertCell(4);
 				let btn = document.createElement("button");
 				btn.innerHTML = "Carrito";
+				btn.classList.add("btn");
+	        	btn.classList.add("btn-secondary");
 				btn.onclick = function(){
 					event.preventDefault();
 					let monto = document.getElementById("totalCarrito");
@@ -199,6 +203,8 @@ function showClients(bodyTable, elements) {
 		let cell5 = newRow.insertCell(4);
 		let btn = document.createElement("button");
 		btn.innerHTML = "Eliminar";
+		btn.classList.add("btn");
+		btn.classList.add("btn-secondary");
 		btn.onclick = function(){
 			    fetch('http://localhost:8080/client/' + element['dni'], {
 			        method: 'DELETE',
@@ -219,6 +225,8 @@ function showClients(bodyTable, elements) {
 		let btn2 = document.createElement("button");
 		btn2.innerHTML = "Editar";
 		btn2.dataset.toggle = "modal";
+		btn2.classList.add("btn");
+		btn2.classList.add("btn-secondary");
 		btn2.dataset.target = "#editClient";
 		btn2.onclick = function(){
 				document.getElementById("dniEdit").value = element['dni']
@@ -299,6 +307,8 @@ function showProducts(bodyTable, elements) {
 		let cell5 = newRow.insertCell(4);
 		let btn = document.createElement("button");
 		btn.innerHTML = "Eliminar";
+		btn.classList.add("btn");
+		btn.classList.add("btn-secondary");
 		btn.onclick = function(){
 			    fetch('http://localhost:8080/product/' + element['id'], {
 			        method: 'DELETE',
@@ -318,6 +328,8 @@ function showProducts(bodyTable, elements) {
 		let cell6 = newRow.insertCell(4);
 		let btn2 = document.createElement("button");
 		btn2.innerHTML = "Editar";
+		btn2.classList.add("btn");
+		btn2.classList.add("btn-secondary");
 		btn2.dataset.toggle = "modal";
 		btn2.dataset.target = "#editProduct";
 		btn2.onclick = function(){
@@ -399,6 +411,8 @@ function showBills(bodyTable, elements) {
         let cell5 = newRow.insertCell(4);
 		let btn2 = document.createElement("button");
 		btn2.innerHTML = "Ver Productos";
+		btn2.classList.add("btn");
+		btn2.classList.add("btn-secondary");
 		btn2.dataset.toggle = "modal";
 		btn2.dataset.target = "#billProducts";
 		btn2.onclick = function(){
