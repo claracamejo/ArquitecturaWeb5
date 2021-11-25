@@ -29,7 +29,7 @@ import org.slf4j.Logger;
 
 @RestController
 @RequestMapping("/product")
-class ProductController {
+public class ProductController {
 private static Logger LOG = LoggerFactory.getLogger(ProductController.class);
 	
 	@Autowired

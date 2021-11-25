@@ -50,12 +50,7 @@ public class ArquiWebTp4ApplicationTests {
     	records.add(RECORD_2);
     	records.add(RECORD_3);
     	
-
-    	
-
     	Mockito.when(clientService.getClients()).thenReturn(records);
-
-
         
         mockMvc.perform(get("/client"))
 
