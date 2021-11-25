@@ -27,7 +27,7 @@ import arquiweb.spring.demo.services.ClientService;
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(ClientController.class)
-public class ClientControllerTests {
+public class ArquiWebTp4ApplicationTests {
 	
 	@Autowired
     MockMvc mockMvc;
@@ -43,7 +43,7 @@ public class ClientControllerTests {
     
     
     @Test
-    public void getAllRecords_success() throws Exception {
+    public void clientControllerTest() throws Exception {
         
     	List<Client> records = new ArrayList<>();
     	records.add(RECORD_1);

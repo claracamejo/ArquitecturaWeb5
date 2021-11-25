@@ -31,7 +31,7 @@ import arquiweb.spring.demo.services.ClientService;
 
 @RestController
 @RequestMapping("/client")
-class ClientController {
+public class ClientController {
 private static Logger LOG = LoggerFactory.getLogger(ClientController.class);
 	
 	@Autowired
