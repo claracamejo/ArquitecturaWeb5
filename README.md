@@ -3,6 +3,8 @@
 
 [Punto 5: Informe](https://docs.google.com/document/d/10yHD5jiKclTuCMFMvua9EGi0-PELmj2bSpPr1uJ5ri4/edit?usp=sharing)
 
+[Deploy en Heroku](https://tparquiweb5.herokuapp.com/)
+
 Integrantes:
 - Tomas Rimoli, Matias
 - Pedemonte, Melany
