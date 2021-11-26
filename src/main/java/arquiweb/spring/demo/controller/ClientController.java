@@ -87,12 +87,10 @@ private static Logger LOG = LoggerFactory.getLogger(ClientController.class);
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<?> deleteClient(@PathVariable("id") int id) {
 		boolean ok = this.clientService.delete(id);
-		if(!ok) {
-			System.out.println("no borro");
+		if(!ok ) {
 			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 		}
 		else {
-			System.out.println("si borro");
 			return new ResponseEntity<>(id, HttpStatus.OK);
 		}
 	}

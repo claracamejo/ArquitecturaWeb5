@@ -1,6 +1,7 @@
 package ArquiWeb.Spring.demo;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -16,6 +17,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -43,7 +45,7 @@ public class ClientControllerTest {
      * GET
      */    
     @Test
-    public void clientControllerTestGetAllGET() throws Exception {
+    public void clientControllerTestGetAll() throws Exception {
     	
     	Client RECORD_1 = new Client(1, "Client"+1, "Lastname" +1, "street 00" +1);
         Client RECORD_2 = new Client(2, "Client"+2, "Lastname" +2, "street 00" +2);
@@ -82,6 +84,19 @@ public class ClientControllerTest {
                 .andExpect(jsonPath("$.name", is("Client4")));
     }
     
-    
+    /*
+     * DELETE
+     */
+    @Test
+    public void clientControllerTestDeleteById() throws Exception {
+        
+    	
+    	Mockito.when(clientService.delete(2)).thenReturn(true);
+        
+        mockMvc.perform(delete("/client/2").contentType(MediaType.APPLICATION_JSON))
+
+                .andExpect(status().isOk());
+               
+    }
 	
 }
