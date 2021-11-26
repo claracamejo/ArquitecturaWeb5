@@ -71,7 +71,7 @@ private static Logger LOG = LoggerFactory.getLogger(ClientController.class);
 	public ResponseEntity<?> getClient(@PathVariable( "id" ) int id) {
 		Optional<Client> responseC = this.clientService.getClient(id);
 		System.out.println("out " + responseC);
-		if (responseC.isEmpty()) {
+		if (responseC != null) {
 			return new ResponseEntity<>(responseC, HttpStatus.NO_CONTENT);
 		}else {
 			return new ResponseEntity<>(responseC, HttpStatus.OK);
