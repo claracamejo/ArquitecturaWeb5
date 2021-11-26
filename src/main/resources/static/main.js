@@ -33,7 +33,7 @@ function addProduct() {
 		"stock": stock
 	}
 
-	fetch('http://localhost:8080/product', {
+	fetch('/product', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(data)
@@ -64,7 +64,7 @@ function addClient() {
 		"address": address
 	}
 
-	fetch('http://localhost:8080/client', {
+	fetch('/client', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(data)
@@ -96,7 +96,7 @@ console.log(productosCarrito);
 	}
 
 return console.log(data);
-	fetch('http://localhost:8080/bill', {
+	fetch('/bill', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(data)
@@ -112,7 +112,7 @@ return console.log(data);
 
 function getProducts() {
 console.log("getP");
-	fetch('http://localhost:8080/product')
+	fetch('/product')
 		.then(response => {
 			return response.json()
 		}).then(function(products) {
@@ -170,7 +170,7 @@ function getAllClient() {
     let bodyTable = document.getElementsByClassName('bodyTable')[0];
 	let bodyTable1 = document.getElementById('myTable');
 	bodyTable1.style.display = "table";
-	fetch('http://localhost:8080/client')
+	fetch('/client')
 		.then(response => {
 			return response.json()
 		}).then(function(response) {
@@ -206,7 +206,7 @@ function showClients(bodyTable, elements) {
 		btn.classList.add("btn");
 		btn.classList.add("btn-secondary");
 		btn.onclick = function(){
-			    fetch('http://localhost:8080/client/' + element['dni'], {
+			    fetch('/client/' + element['dni'], {
 			        method: 'DELETE',
 			    })
 			       .then(response => {
@@ -252,7 +252,7 @@ function editClient() {
 		"address": address
 	}
 
-	fetch('http://localhost:8080/client/'+numDoc, {
+	fetch('/client/'+numDoc, {
 		method: 'PUT',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(data)
@@ -274,7 +274,7 @@ function getAllProducts() {
     let bodyTable = document.getElementsByClassName('bodyTableP')[0];
 	let bodyTable1 = document.getElementById('myTableP');
 	bodyTable1.style.display = "table";
-	fetch('http://localhost:8080/product')
+	fetch('/product')
 		.then(response => {
 			return response.json()
 		}).then(function(response) {
@@ -310,7 +310,7 @@ function showProducts(bodyTable, elements) {
 		btn.classList.add("btn");
 		btn.classList.add("btn-secondary");
 		btn.onclick = function(){
-			    fetch('http://localhost:8080/product/' + element['id'], {
+			    fetch('/product/' + element['id'], {
 			        method: 'DELETE',
 			    })
 			       .then(response => {
@@ -356,7 +356,7 @@ function editProduct() {
 		"stock": stock
 	}
 
-	fetch('http://localhost:8080/product/'+id, {
+	fetch('/product/'+id, {
 		method: 'PUT',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(data)
@@ -378,7 +378,7 @@ function getAllBills() {
     let bodyTable = document.getElementsByClassName('bodyTableB')[0];
 	let bodyTable1 = document.getElementById('myTableB');
 	bodyTable1.style.display = "table";
-	fetch('http://localhost:8080/bill')
+	fetch('/bill')
 		.then(response => {
 			return response.json()
 		}).then(function(response) {
@@ -426,7 +426,7 @@ function showBills(bodyTable, elements) {
 function getBillProduct(id){
 let bodyTable = document.getElementsByClassName('bodyTableBillProduct')[0];
 let bodyTable1 = document.getElementById('myTableBillProduct');
-fetch('http://localhost:8080/billproduct/bill/' + id, {
+fetch('/billproduct/bill/' + id, {
 			        method: 'GET',
 			    })
 			       .then(response => {
@@ -465,7 +465,7 @@ function getReportClient() {
     let bodyTable = document.getElementsByClassName('bodyTableClient')[0];
 	let bodyTable1 = document.getElementById('myTableClient');
 	bodyTable1.style.display = "table";
-	fetch('http://localhost:8080/client/report')
+	fetch('/client/report')
 		.then(response => {
 			return response.json()
 		}).then(function(response) {
@@ -511,7 +511,7 @@ function getReportBill() {
     let bodyTable = document.getElementsByClassName('bodyTableBill')[0];
 	let bodyTable1 = document.getElementById('myTableBill');
 	bodyTable1.style.display = "table";
-	fetch('http://localhost:8080/bill/report')
+	fetch('/bill/report')
 		.then(response => {
 			return response.json()
 		}).then(function(response) {
@@ -547,7 +547,7 @@ function getReportProduct() {
     let bodyTable = document.getElementsByClassName('bodyTableProduct')[0];
 	let bodyTable1 = document.getElementById('myTableProduct');
 	bodyTable1.style.display = "table";
-	fetch('http://localhost:8080/product/getReport')
+	fetch('/product/getReport')
 		.then(response => {
 			return response.json()
 		}).then(function(response) {
