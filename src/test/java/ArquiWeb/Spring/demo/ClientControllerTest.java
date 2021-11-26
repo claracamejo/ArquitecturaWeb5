@@ -7,6 +7,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -37,13 +38,16 @@ public class ClientControllerTest {
 	ClientService clientService;
 	ClientController controller;
     
-    Client RECORD_1 = new Client(1, "Client"+1, "Lastname" +1, "street 00" +1);
-    Client RECORD_2 = new Client(2, "Client"+2, "Lastname" +2, "street 00" +2);
-    Client RECORD_3 = new Client(3, "Client"+3, "Lastname" +3, "street 00" +3);
     
-    
+	/*
+     * GET
+     */    
     @Test
     public void clientControllerTestGetAllGET() throws Exception {
+    	
+    	Client RECORD_1 = new Client(1, "Client"+1, "Lastname" +1, "street 00" +1);
+        Client RECORD_2 = new Client(2, "Client"+2, "Lastname" +2, "street 00" +2);
+        Client RECORD_3 = new Client(3, "Client"+3, "Lastname" +3, "street 00" +3);
         
     	List<Client> records = new ArrayList<>();
     	records.add(RECORD_1);
@@ -58,6 +62,26 @@ public class ClientControllerTest {
 
                 .andExpect(jsonPath("$.[1].name", is("Client2")));
     }
-	
+    
+    /*
+     * GET
+     */
+    @Test
+    public void clientControllerTestGetById() throws Exception {
+        
+    	Optional<Client> cli = Optional.ofNullable(new Client(4, "Client"+4, "Lastname" +4, "street 00" +4));
+    	
+    	
+    	
+    	Mockito.when(clientService.getClient(4)).thenReturn(cli);
+        
+        mockMvc.perform(get("/client/4"))
+
+                .andExpect(status().isOk())
+
+                .andExpect(jsonPath("$.name", is("Client4")));
+    }
+    
+    
 	
 }

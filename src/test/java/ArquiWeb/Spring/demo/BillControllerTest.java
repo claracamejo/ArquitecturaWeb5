@@ -47,9 +47,11 @@ public class BillControllerTest {
 	    BillService billService;
 	    BillController billController;
 	    
-	    
+	    /*
+	     * GET
+	     */
 	    @Test
-	    public void billControllerTestGetBillsGET() throws Exception {
+	    public void billControllerTestGetBills() throws Exception {
 	        
 
 		    Client RECORD_1 = new Client(1, "Client"+1, "Lastname" +1, "street 00" +1);

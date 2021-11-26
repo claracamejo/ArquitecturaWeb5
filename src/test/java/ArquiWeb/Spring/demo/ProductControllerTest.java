@@ -44,9 +44,11 @@ public class ProductControllerTest {
 		    ProductService productService;
 		    ProductController productController;
 		    
-		    
+		    /*
+		     * POST
+		     */ 
 		    @Test
-		    public void productControllerTestAddProductPOST() throws Exception {
+		    public void productControllerTestAddProduct() throws Exception {
 		        
 		    	Product prod1 = new Product("Producto 1", 200, (long)150);
 
