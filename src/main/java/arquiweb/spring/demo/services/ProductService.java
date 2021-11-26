@@ -34,9 +34,9 @@ public class ProductService {
 	 * Retorna true si el Producto fue insertado con exito
 	 */
 	@Transactional
-	public boolean insert(Product p) {
+	public Product insert(Product p) {
 		this.products.save(p);
-		return true;
+		return p;
 	}
 	
 	/**

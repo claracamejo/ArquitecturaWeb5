@@ -51,8 +51,8 @@ private static Logger LOG = LoggerFactory.getLogger(ProductController.class);
 	 */
 	@PostMapping("")
 	public ResponseEntity<Product> addProduct(@RequestBody Product p) {
-		boolean ok = this.productService.insert(p);
-		if(!ok) {
+		Product ok = this.productService.insert(p);
+		if(ok != null) {
 			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 		}
 		return new ResponseEntity<Product>(p, HttpStatus.OK);
